@@ -2,8 +2,12 @@ extends Area2D
 
 @export var speed: float = 100
 @onready var anim = $AnimatedSprite2D
+@onready var bullet_scene = preload("res://Bullets/Bullet.tscn")
+@onready var guns = $Guns
+@onready var fire_cooldown_timer = $FireCooldown
 
 var vel := Vector2(0, 0)
+var fire_cooldown: float = 0.15
 
 func _process(delta):
 	if vel.x > 0:
@@ -12,6 +16,13 @@ func _process(delta):
 		anim.play("left")
 	else:
 		anim.play("default")
+		
+	if Input.is_action_pressed("shoot") and fire_cooldown_timer.is_stopped():
+		fire_cooldown_timer.start(fire_cooldown)
+		for gun in guns.get_children():
+			var bullet = bullet_scene.instantiate()
+			bullet.global_position = gun.global_position
+			get_tree().current_scene.add_child(bullet)
 		
 	
 func _physics_process(delta):

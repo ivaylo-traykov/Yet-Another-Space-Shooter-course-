@@ -56,3 +56,15 @@ sprite_frames = SubResource("SpriteFrames_rlud7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 3)
 shape = SubResource("CircleShape2D_v55ly")
+
+[node name="Guns" type="Node2D" parent="."]
+
+[node name="LeftGun" type="Node2D" parent="Guns"]
+position = Vector2(-34, -15)
+
+[node name="RightGun" type="Node2D" parent="Guns"]
+position = Vector2(34, -15)
+
+[node name="FireCooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
