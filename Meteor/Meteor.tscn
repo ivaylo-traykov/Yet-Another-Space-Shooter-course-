@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpgv4cfwix2fe"]
+
+[ext_resource type="Texture2D" uid="uid://16phjw3si5vh" path="res://Assets/meteorBig.png" id="1_7a816"]
+[ext_resource type="Script" path="res://Meteor/Meteor.gd" id="1_tccqg"]
+
+[node name="Meteor" type="Area2D" groups=["damageable"]]
+script = ExtResource("1_tccqg")
+min_speed = 50.0
+max_speed = 80.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7a816")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-44, -41, 15, -55, 59, -16, 67, 32, 16, 55, -20, 27, -53, 27, -67, -6)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(1.50001, -1.5)
+scale = Vector2(7.05, 5.95)
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
