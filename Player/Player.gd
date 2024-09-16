@@ -1,13 +1,21 @@
 extends Area2D
+class_name Player
 
 @export var speed: float = 100
+@export var life: int = 3
 @onready var anim = $AnimatedSprite2D
 @onready var bullet_scene = preload("res://Bullets/Bullet.tscn")
 @onready var guns = $Guns
 @onready var fire_cooldown_timer = $FireCooldown
+@onready var shield_timer = $ShieldTimer
+@onready var shield_sprite = $Shield
 
 var vel := Vector2(0, 0)
 var fire_cooldown: float = 0.15
+var shield_cooldown = 1.5
+
+func _ready():
+	shield_sprite.visible = false
 
 func _process(delta):
 	if vel.x > 0:
@@ -46,3 +54,21 @@ func _physics_process(delta):
 	
 	position.x = clamp(position.x, 0, viewRect.size.x)
 	position.y = clamp(position.y, 0, viewRect.size.y)
+
+func take_damage(amount: int):
+	if not shield_timer.is_stopped():
+		return
+	
+	shield_timer.start(shield_cooldown)
+	shield_sprite.visible = true
+	life -= amount
+	print("Player life: %s" % life)
+	
+	if life <= 0:
+		print("PLAYER DIED")
+		queue_free()
+	
+
+
+func _on_shield_timer_timeout():
+	shield_sprite.visible = false

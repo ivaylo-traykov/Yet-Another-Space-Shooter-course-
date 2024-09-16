@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://wv5ckum87ipp"]
+[gd_scene load_steps=9 format=3 uid="uid://wv5ckum87ipp"]
 
 [ext_resource type="Texture2D" uid="uid://ncthjpprr2de" path="res://Assets/player_sheet.png" id="1_f3uxa"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_hlkjc"]
+[ext_resource type="Texture2D" uid="uid://jvpqyt0u1f45" path="res://Assets/shield.png" id="3_4g0ee"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2isdm"]
 atlas = ExtResource("1_f3uxa")
@@ -68,3 +69,13 @@ position = Vector2(34, -15)
 [node name="FireCooldown" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="ShieldTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Shield" type="Sprite2D" parent="."]
+position = Vector2(0, -9)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_4g0ee")
+
+[connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_timer_timeout"]
