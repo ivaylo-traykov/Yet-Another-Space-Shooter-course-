@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://slciu8ucsy3m"]
+
+[ext_resource type="PackedScene" uid="uid://ce31psw2ehxxb" path="res://Bullets/BulletEffect.tscn" id="1_8ej8x"]
+[ext_resource type="Texture2D" uid="uid://by1shxroynog3" path="res://Assets/laserGreenShot.png" id="2_283u6"]
+
+[node name="EnemyBulletEffect" instance=ExtResource("1_8ej8x")]
+texture = ExtResource("2_283u6")

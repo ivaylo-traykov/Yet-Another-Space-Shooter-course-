@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcmec7sj4nho5"]
+
+[ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_jpg4n"]
+[ext_resource type="Texture2D" uid="uid://c471br3i3d41x" path="res://Assets/enemyUFO.png" id="2_ogm2i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ag0vr"]
+radius = 46.0109
+
+[node name="Enemy" type="Area2D" groups=["damageable"]]
+script = ExtResource("1_jpg4n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ogm2i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ag0vr")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(-3, 1)
+scale = Vector2(5.6, 5.1)
+
+[node name="Guns" type="Node2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

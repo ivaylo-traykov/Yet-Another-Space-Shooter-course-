@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://20pku1h7q7ou"]
+
+[ext_resource type="PackedScene" uid="uid://dcmec7sj4nho5" path="res://Enemy/enemy.tscn" id="1_dvmqm"]
+[ext_resource type="Script" path="res://Enemy/enemy_fast.gd" id="2_70xah"]
+
+[node name="EnemyFast" instance=ExtResource("1_dvmqm")]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("2_70xah")
+rotation_rate = 60
+healrh = 15

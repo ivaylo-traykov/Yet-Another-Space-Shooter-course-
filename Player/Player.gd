@@ -68,7 +68,5 @@ func take_damage(amount: int):
 	if life <= 0:
 		queue_free()
 	
-
-
 func _on_shield_timer_timeout():
 	shield_sprite.visible = false

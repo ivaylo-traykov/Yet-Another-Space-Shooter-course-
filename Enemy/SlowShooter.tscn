@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1r5x77ar7v73"]
+
+[ext_resource type="PackedScene" uid="uid://dcmec7sj4nho5" path="res://Enemy/enemy.tscn" id="1_3gno1"]
+[ext_resource type="Script" path="res://Enemy/SlowShooter.gd" id="2_rlduo"]
+[ext_resource type="Texture2D" uid="uid://yuko6gt7b3br" path="res://Assets/enemyShip.png" id="2_wm427"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qblc0"]
+size = Vector2(88, 31)
+
+[node name="SlowSHooter" instance=ExtResource("1_3gno1")]
+script = ExtResource("2_rlduo")
+fire_rate = 1.0
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_wm427")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_qblc0")
+
+[node name="VisibleOnScreenEnabler2D" parent="." index="2"]
+position = Vector2(1, 1.5)
+scale = Vector2(5.1, 3.15)
+
+[node name="LeftGun" type="Node2D" parent="Guns" index="0"]
+position = Vector2(-23, 29)
+
+[node name="RightGun" type="Node2D" parent="Guns" index="1"]
+position = Vector2(23, 29)
+
+[node name="FireTimer" type="Timer" parent="." index="4"]
+one_shot = true
