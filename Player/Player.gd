@@ -16,6 +16,7 @@ var shield_cooldown = 1.5
 
 func _ready():
 	shield_sprite.visible = false
+	Signals.emit_signal("on_player_life_change", life)
 
 func _process(delta):
 	if vel.x > 0:
@@ -62,10 +63,9 @@ func take_damage(amount: int):
 	shield_timer.start(shield_cooldown)
 	shield_sprite.visible = true
 	life -= amount
-	print("Player life: %s" % life)
+	Signals.emit_signal("on_player_life_change", life)
 	
 	if life <= 0:
-		print("PLAYER DIED")
 		queue_free()
 	
 

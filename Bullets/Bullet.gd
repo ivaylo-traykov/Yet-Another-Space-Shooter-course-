@@ -1,7 +1,7 @@
 extends Area2D
 
 var speed : float = 800
-var bullet_effect_scene = preload("res://Bullets/bullet_effect.tscn")
+var bullet_effect_scene = preload("res://Bullets/BulletEffect.tscn")
 
 func _physics_process(delta):
 	position.y -= speed * delta

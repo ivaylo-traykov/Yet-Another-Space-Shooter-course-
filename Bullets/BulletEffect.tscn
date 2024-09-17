@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://ce31psw2ehxxb"]
 
-[ext_resource type="Script" path="res://Bullets/bullet_effect.gd" id="1_3eqt6"]
-[ext_resource type="Texture2D" uid="uid://brjnnqr470q4o" path="res://Assets/laserRedShot.png" id="1_53sw0"]
+[ext_resource type="Texture2D" uid="uid://brjnnqr470q4o" path="res://Assets/laserRedShot.png" id="1_7jydp"]
+[ext_resource type="Script" path="res://Bullets/BulletEffect.gd" id="2_10iwj"]
 
 [node name="BulletEffect" type="Sprite2D"]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_53sw0")
-script = ExtResource("1_3eqt6")
+texture = ExtResource("1_7jydp")
+script = ExtResource("2_10iwj")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.05

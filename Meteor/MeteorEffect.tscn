@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckqawo3r0oind"]
+
+[ext_resource type="Texture2D" uid="uid://c27s5d2r6g43e" path="res://Assets/meteorSmall.png" id="1_fcpsw"]
+[ext_resource type="Script" path="res://Meteor/MeteorEffect.gd" id="2_htf7c"]
+
+[sub_resource type="Gradient" id="Gradient_6wtnx"]
+offsets = PackedFloat32Array(0, 0.649635, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="MeteorEffect" type="CPUParticles2D"]
+emitting = false
+amount = 15
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_fcpsw")
+emission_shape = 1
+emission_sphere_radius = 40.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 140.0
+angular_velocity_min = -200.0
+angular_velocity_max = 200.0
+scale_amount_min = 0.5
+scale_amount_max = 0.8
+color_ramp = SubResource("Gradient_6wtnx")
+script = ExtResource("2_htf7c")
