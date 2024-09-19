@@ -1,13 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxh6qbaigjisb"]
+[gd_scene load_steps=6 format=3 uid="uid://bxh6qbaigjisb"]
 
 [ext_resource type="PackedScene" uid="uid://wv5ckum87ipp" path="res://Player/Player.tscn" id="1_gnlfi"]
 [ext_resource type="Texture2D" uid="uid://cakrynf65l1un" path="res://Assets/backgroundColor.png" id="1_xetkt"]
 [ext_resource type="Texture2D" uid="uid://b337hf52nv4yk" path="res://Assets/starBig.png" id="2_oa3dt"]
-[ext_resource type="PackedScene" uid="uid://dpgv4cfwix2fe" path="res://Meteor/Meteor.tscn" id="3_gqn7b"]
 [ext_resource type="PackedScene" uid="uid://fuiue6cdp4xj" path="res://HUD/HUD.tscn" id="5_aknq6"]
-[ext_resource type="PackedScene" uid="uid://20pku1h7q7ou" path="res://Enemy/enemy_fast.tscn" id="6_gydgq"]
-[ext_resource type="PackedScene" uid="uid://d1r5x77ar7v73" path="res://Enemy/SlowShooter.tscn" id="8_abx8d"]
-[ext_resource type="PackedScene" uid="uid://b2egwju612lam" path="res://Enemy/bouncer_enemy.tscn" id="8_qoh02"]
+[ext_resource type="Script" path="res://MainScenes/BouncerEnemy.gd" id="5_gjxth"]
 
 [node name="Game" type="Node"]
 
@@ -40,14 +37,13 @@ scale_amount_min = 0.2
 z_index = 100
 position = Vector2(228, 517)
 
-[node name="Meteor" parent="." instance=ExtResource("3_gqn7b")]
-position = Vector2(319, 78)
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2(225, 0)
+script = ExtResource("5_gjxth")
 
-[node name="EnemyFast" parent="." instance=ExtResource("6_gydgq")]
-position = Vector2(174, 90)
+[node name="SpawnTimer" type="Timer" parent="Spawner"]
+wait_time = 2.0
+one_shot = true
+autostart = true
 
-[node name="SLowSHooter" parent="." instance=ExtResource("8_abx8d")]
-position = Vector2(400, 165)
-
-[node name="BouncerEnemy" parent="." instance=ExtResource("8_qoh02")]
-position = Vector2(58, 120)
+[connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
