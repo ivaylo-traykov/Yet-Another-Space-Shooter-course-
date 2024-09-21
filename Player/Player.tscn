@@ -73,9 +73,13 @@ one_shot = true
 [node name="ShieldTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="RapidFireTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="Shield" type="Sprite2D" parent="."]
 position = Vector2(0, -9)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_4g0ee")
 
 [connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_timer_timeout"]
+[connection signal="timeout" from="RapidFireTimer" to="." method="_on_rapid_fire_timer_timeout"]

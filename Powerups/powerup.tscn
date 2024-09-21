@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://clw7w1r3d8a61"]
+
+[ext_resource type="Script" path="res://Powerups/powerup.gd" id="1_ex1b4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xg0cj"]
+radius = 88.0909
+
+[node name="Powerup" type="Area2D"]
+script = ExtResource("1_ex1b4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xg0cj")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

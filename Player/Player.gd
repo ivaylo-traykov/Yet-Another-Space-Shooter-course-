@@ -9,9 +9,12 @@ class_name Player
 @onready var fire_cooldown_timer = $FireCooldown
 @onready var shield_timer = $ShieldTimer
 @onready var shield_sprite = $Shield
+@onready var rapid_fire_timer = $RapidFireTimer
 
 var vel := Vector2(0, 0)
-var fire_cooldown: float = 0.15
+var fire_cooldown_default = 0.15
+var fire_cooldown_rapid = 0.08
+var fire_cooldown = fire_cooldown_default
 var shield_cooldown = 1.5
 
 func _ready():
@@ -27,7 +30,7 @@ func _process(delta):
 		anim.play("default")
 		
 	if Input.is_action_pressed("shoot") and fire_cooldown_timer.is_stopped():
-		fire_cooldown_timer.start(fire_cooldown)
+		fire_cooldown_timer.start(fire_cooldown) 
 		for gun in guns.get_children():
 			var bullet = bullet_scene.instantiate()
 			bullet.global_position = gun.global_position
@@ -60,10 +63,10 @@ func take_damage(amount: int):
 	if not shield_timer.is_stopped():
 		return
 	
-	shield_timer.start(shield_cooldown)
-	shield_sprite.visible = true
 	life -= amount
 	Signals.emit_signal("on_player_life_change", life)
+	
+	apply_shield(shield_cooldown)
 	
 	var camera = get_tree().current_scene.find_child("Camera", true, false)
 	camera.shake(10)
@@ -71,5 +74,25 @@ func take_damage(amount: int):
 	if life <= 0:
 		queue_free()
 	
+
+func apply_shield(time):
+	shield_timer.start(time + shield_timer.time_left)
+	shield_sprite.visible = true
+
+
+func apply_rapid_fire(time):
+	fire_cooldown = fire_cooldown_rapid
+	rapid_fire_timer.start(time + rapid_fire_timer.time_left)
+
+
+func apply_life():
+	life += 1
+	Signals.emit_signal("on_player_life_change", life)
+
+
 func _on_shield_timer_timeout():
 	shield_sprite.visible = false
+
+
+func _on_rapid_fire_timer_timeout():
+	fire_cooldown = fire_cooldown_default

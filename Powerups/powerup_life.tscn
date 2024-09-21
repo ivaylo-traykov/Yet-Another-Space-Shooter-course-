@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://beukerqdm8iui"]
+
+[ext_resource type="PackedScene" uid="uid://clw7w1r3d8a61" path="res://Powerups/powerup.tscn" id="1_4km8n"]
+[ext_resource type="Texture2D" uid="uid://bxhsuswxvynbd" path="res://Assets/pickup_sheet.png" id="2_pddvi"]
+[ext_resource type="Script" path="res://Powerups/powerup_life.gd" id="2_s8uqq"]
+
+[node name="PowerupLife" instance=ExtResource("1_4km8n")]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("2_s8uqq")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_pddvi")
+region_enabled = true
+region_rect = Rect2(32, 6, 186, 186)
+
+[node name="VisibleOnScreenEnabler2D" parent="." index="2"]
+position = Vector2(-2, 7.62939e-06)
+scale = Vector2(9.4, 9.2)
