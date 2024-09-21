@@ -65,6 +65,9 @@ func take_damage(amount: int):
 	life -= amount
 	Signals.emit_signal("on_player_life_change", life)
 	
+	var camera = get_tree().current_scene.find_child("Camera", true, false)
+	camera.shake(10)
+	
 	if life <= 0:
 		queue_free()
 	

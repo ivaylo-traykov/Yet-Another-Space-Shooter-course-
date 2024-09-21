@@ -15,4 +15,6 @@ func _on_area_entered(area):
 		effect.position = position
 		get_parent().add_child(effect)
 		area.take_damage(1)
+		var camera = get_tree().current_scene.find_child("Camera", true, false)
+		camera.shake(0.5)
 		queue_free()

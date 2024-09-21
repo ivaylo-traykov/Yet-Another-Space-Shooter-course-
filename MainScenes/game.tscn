@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxh6qbaigjisb"]
+[gd_scene load_steps=7 format=3 uid="uid://bxh6qbaigjisb"]
 
 [ext_resource type="PackedScene" uid="uid://wv5ckum87ipp" path="res://Player/Player.tscn" id="1_gnlfi"]
 [ext_resource type="Texture2D" uid="uid://cakrynf65l1un" path="res://Assets/backgroundColor.png" id="1_xetkt"]
 [ext_resource type="Texture2D" uid="uid://b337hf52nv4yk" path="res://Assets/starBig.png" id="2_oa3dt"]
 [ext_resource type="PackedScene" uid="uid://fuiue6cdp4xj" path="res://HUD/HUD.tscn" id="5_aknq6"]
 [ext_resource type="Script" path="res://MainScenes/Spawner.gd" id="5_gjxth"]
+[ext_resource type="Script" path="res://MainScenes/camera.gd" id="6_f2vmy"]
 
 [node name="Game" type="Node"]
 
@@ -45,5 +46,9 @@ script = ExtResource("5_gjxth")
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("6_f2vmy")
 
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
