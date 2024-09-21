@@ -27,3 +27,4 @@ func _on_spawn_timer_timeout():
 	
 	# Reset timer
 	spawn_timer.start(spawn_time)
+	spawn_time = clamp(spawn_time - 0.1, MIN_SPAWN_TIME, 5.0)

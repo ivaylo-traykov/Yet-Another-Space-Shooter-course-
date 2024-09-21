@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cakrynf65l1un" path="res://Assets/backgroundColor.png" id="1_xetkt"]
 [ext_resource type="Texture2D" uid="uid://b337hf52nv4yk" path="res://Assets/starBig.png" id="2_oa3dt"]
 [ext_resource type="PackedScene" uid="uid://fuiue6cdp4xj" path="res://HUD/HUD.tscn" id="5_aknq6"]
-[ext_resource type="Script" path="res://MainScenes/BouncerEnemy.gd" id="5_gjxth"]
+[ext_resource type="Script" path="res://MainScenes/Spawner.gd" id="5_gjxth"]
 
 [node name="Game" type="Node"]
 

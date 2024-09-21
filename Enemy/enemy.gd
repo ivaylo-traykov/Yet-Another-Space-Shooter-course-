@@ -7,6 +7,7 @@ class_name Enemy
 @onready var guns = $Guns
 
 var bullet_scene = preload("res://Bullets/enemy_bullet.tscn")
+var death_effect_scene = preload("res://Enemy/enemy_death_effect.tscn")
 var player_in_area = null
 
 func _process(delta):
@@ -19,6 +20,9 @@ func _physics_process(delta):
 func take_damage(amount):
 	healrh -= amount
 	if healrh <= 0:
+		var effect = death_effect_scene.instantiate()
+		effect.global_position = global_position
+		get_tree().current_scene.add_child(effect)
 		queue_free()
 
 func fire():
