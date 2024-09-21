@@ -18,11 +18,14 @@ func _physics_process(delta):
 	position.y += vertical_speed * delta
 	
 func take_damage(amount):
+	if healrh <= 0: return
+	
 	healrh -= amount
 	if healrh <= 0:
 		var effect = death_effect_scene.instantiate()
 		effect.global_position = global_position
 		get_tree().current_scene.add_child(effect)
+		Signals.emit_signal("on_score_change", 5)
 		queue_free()
 
 func fire():

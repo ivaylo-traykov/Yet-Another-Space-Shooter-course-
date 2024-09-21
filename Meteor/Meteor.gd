@@ -25,11 +25,14 @@ func _physics_process(delta):
 	position.y += speed * delta
 
 func take_damage(amount):
+	if life <= 0: return
+	
 	life -= amount
 	if life <= 0:
 		var effect = effect_scene.instantiate()
 		effect.position = position
 		get_parent().add_child(effect)
+		Signals.emit_signal("on_score_change", 15)
 		queue_free()
 
 func _on_visible_on_screen_enabler_2d_screen_exited():
